@@ -1,0 +1,9 @@
+{
+  "id": "my-plugin-id",
+  "name": "My Plugin Name",
+  "author": "My Name",
+  "description": "My Plugin Description",
+  "license": "MIT",
+  "version": "0.1.0",
+  "icon": "icon.png"
+}
