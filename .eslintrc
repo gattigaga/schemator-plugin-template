@@ -1,8 +1,10 @@
 {
-    "extends": ["standard", "prettier"],
-    "plugins": ["prettier"],
-    "rules": {
-      "prettier/prettier": "error"
-    }
+  "extends": ["standard", "prettier"],
+  "plugins": ["prettier"],
+  "rules": {
+    "prettier/prettier": "error"
+  },
+  "env": {
+    "jest": true
   }
-  
+}

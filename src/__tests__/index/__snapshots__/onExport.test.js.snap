@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`onExport() should returns exported result 1`] = `
+Object {
+  "files": Array [
+    Object {
+      "content": "name, email, password",
+      "path": "/exported/myproject/User.txt",
+    },
+    Object {
+      "content": "user_id, title",
+      "path": "/exported/myproject/Post.txt",
+    },
+  ],
+  "paths": Array [
+    "/exported/myproject",
+  ],
+}
+`;

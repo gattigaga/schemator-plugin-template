@@ -20,7 +20,7 @@ const fieldTypes = [
  *
  * @returns {object} Created scheme.
  */
-const onInit = () => {
+export const onInit = () => {
   // This will create a table named 'MyTable'
   // which has checkbox Option ID
   // and field named 'fieldName' with type 'typeID'
@@ -65,7 +65,7 @@ const onInit = () => {
  * @param {number} cursorPosition.y
  * @returns {object} Created table with it's field.
  */
-const onCreateTable = cursorPosition => {
+export const onCreateTable = cursorPosition => {
   const table = createTable({
     name: "MyTable",
     options: [
@@ -78,15 +78,17 @@ const onCreateTable = cursorPosition => {
     position: cursorPosition
   });
 
-  const field = createField({
-    tableID: table.id,
-    name: "fieldName",
-    type: "typeID"
-  });
+  const fields = [
+    createField({
+      tableID: table.id,
+      name: "fieldName",
+      type: "typeID"
+    })
+  ];
 
   const scheme = {
     table,
-    field
+    fields
   };
 
   return scheme;
@@ -100,7 +102,7 @@ const onCreateTable = cursorPosition => {
  * @param {string} tableID ID of table which has this field.
  * @returns {object} Created field.
  */
-const onCreateField = tableID => {
+export const onCreateField = tableID => {
   return createField({
     tableID,
     name: "fieldName",
@@ -118,7 +120,7 @@ const onCreateField = tableID => {
  * @param {object[]} fields All created fields.
  * @returns {object[]} Created relations.
  */
-const onUpdate = data => {
+export const onUpdate = data => {
   // This will create all needed relations.
 
   const { tables, fields } = data;
@@ -157,7 +159,7 @@ const onUpdate = data => {
  * @param {object[]} data.relations All created relations.
  * @returns {object} Paths and files which should be created.
  */
-const onExport = (destinationPath, data) => {
+export const onExport = (destinationPath, data) => {
   const byTable = tableID => field => field.tableID === tableID;
 
   const { project, tables, fields } = data;
@@ -169,7 +171,7 @@ const onExport = (destinationPath, data) => {
     const content = fields
       .filter(byTable(table.id))
       .map(item => item.name)
-      .join("\n");
+      .join(", ");
 
     return {
       path: `${exportPath}/${filename}`,
